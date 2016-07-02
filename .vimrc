@@ -1,6 +1,10 @@
 set nocompatible
 syntax on
-" colorscheme molokai
+
+set t_Co=256
+let g:molokai_original=1
+let g:rehash256=1
+colorscheme molokai
 " set background=dark
 
 set number
@@ -28,3 +32,28 @@ set hlsearch				" highlighting the searching
 filetype plugin indent on
 
 set showcmd					" display incomplete commands
+
+" taglist
+let Tlist_Show_One_File = 1 
+let Tlist_Exit_OnlyWindow = 1
+nnoremap <silent> <F11> :TlistToggle<CR>
+
+" NERD Tree
+let NERDChristmasTree = 1
+let NERDTreeAutoCenter = 1
+let NERDTreeMouseMode = 2
+let NERDTreeShowBookmarks = 1
+let NERDTreeShowFiles = 1
+let NERDTreeShowHidden = 1
+let NERDTreeShowLineNumbers = 1
+let NERDTreeShowWinSize = 31
+let NERDTreeDirArrows=0
+nnoremap <silent> <F12> :NERDTreeToggle<CR>
+autocmd bufenter * if(winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+"NERD_commenter
+let NERDShutUp = 1
+let NERDSpaceDelims = 1
+let NERDCompactSexyComs = 1
+map <C-J> <leader>c<space><Esc><Down>
+
