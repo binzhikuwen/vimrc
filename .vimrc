@@ -12,20 +12,30 @@ Plugin 'VundleVim/Vundle.vim'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
+
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
+
 " plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
+Plugin 'L9'
+
 " Git plugin not hosted on GitHub
-Plugin 'git://git.wincent.com/command-t.git'
+" Plugin 'git://git.wincent.com/command-t.git'
 " git repos on your local machine (i.e. when working on your own plugin)
-Plugin 'file:///home/gmarik/path/to/plugin'
+" Plugin 'file:///home/gmarik/path/to/plugin'
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}
+
+Plugin 'tomasr/molokai'
+Plugin 'preservim/nerdtree'
+Plugin 'preservim/nerdcommenter'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'yegappan/taglist'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -41,7 +51,9 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
- 
+
+
+
 ".vimrc
 syntax on
 
@@ -78,6 +90,7 @@ set showcmd					" display incomplete commands
 " taglist
 let Tlist_Show_One_File = 1 
 let Tlist_Exit_OnlyWindow = 1
+let Tlist_Use_Right_Window = 1
 nnoremap <silent> <F11> :TlistToggle<CR>
 
 " NERD Tree
@@ -91,9 +104,10 @@ let NERDTreeShowLineNumbers = 1
 let NERDTreeShowWinSize = 31
 let NERDTreeDirArrows=0
 nnoremap <silent> <F12> :NERDTreeToggle<CR>
-autocmd bufenter * if(winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" Start NERDTree and put the cursor back in the other window.
+autocmd VimEnter * NERDTree | wincmd p
 
-"NERD_commenter
+"NERD Commenter
 let NERDShutUp = 1
 let NERDSpaceDelims = 1
 let NERDCompactSexyComs = 1
